@@ -53,21 +53,13 @@ func main() {
 	http.HandleFunc("/templates/js/scripts.js", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "templates/js/scripts.js")
 	})
-	http.HandleFunc("/img/bg-masthead.jpg", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "templates/assets/img/bg-masthead.jpg")
+	http.HandleFunc("/assets/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "templates"+r.URL.Path)
 	})
-	http.HandleFunc("/img/bg-callout.jpg", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "templates/assets/img/bg-callout.jpg")
-	})
-	http.HandleFunc("/assets/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "templates/assets/favicon.ico")
-	})
-	http.HandleFunc("/download-resume", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "templates/assets/Dexter Williamson - Resume.pdf")
-	})
+
 	http.HandleFunc("/resume", h1)
 	http.HandleFunc("/add-blog/", h2)
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 
 }

@@ -10959,7 +10959,7 @@ html {
 
 .callout {
   padding: 15rem 0;
-  background: url("/img/bg-callout.jpg");
+  background: url("/assets/img/bg-callout.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11008,16 +11008,16 @@ footer.footer .social-link:hover {
 }
 .masthead {
   min-height: 30rem;
-  position: absolute;
+  position: relative;
   display: table;
   width: 100%;
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background-image: url("/img/bg-masthead.jpg"), url('/img/bg-callout.jpg');
-  background-position: center center;
+  background-image: url("/assets/img/bg-masthead.jpg");
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: auto auto;
 }
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
