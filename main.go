@@ -17,21 +17,17 @@ type Categorys struct {
 
 var tmpl *template.Template
 
-func init() {
-	tmpl = template.Must(template.ParseGlob("templates/*.html"))
-
-}
-
 func main() {
+	tmpl = template.Must(template.ParseGlob("templates/*.html"))
 
 	h1 := func(w http.ResponseWriter, r *http.Request) {
 
 		blogs := map[string][]Blog{
 			"Blogs": {
-				{Title: "sdf", Body: "Today feet good"},
-				{Title: "sdf", Body: "Today feet good"},
-				{Title: "zgdg", Body: "Today feet good"},
-			},
+				{Title: "Go", Body: "Today feet good"},
+				{Title: "Java", Body: "Today feet good"},
+				{Title: "C++", Body: "Today feet good"},
+				{Title: "Python", Body: "Today feet good"}},
 		}
 
 		tmpl.ExecuteTemplate(w, "index.html", blogs)
