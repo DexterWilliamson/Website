@@ -7,8 +7,9 @@ import (
 )
 
 type Blog struct {
-	Title string
-	Body  string
+	Title   string
+	Body    string
+	Picture string
 }
 
 type Categorys struct {
@@ -24,12 +25,12 @@ func main() {
 
 		blogs := map[string][]Blog{
 			"Blogs": {
-				{Title: "Go", Body: "Today feet good"},
-				{Title: "Java", Body: "Today feet good"},
-				{Title: "C++", Body: "Today feet good"},
-				{Title: "Python", Body: "Today feet good"}},
+				{Title: "Go", Body: "Today feet good", Picture: "/assets/img/Go-Logo.png"},
+				{Title: "Java", Body: "Today feet good", Picture: "/assets/img/Java-Logo.png"},
+				{Title: "C++", Body: "Today feet good", Picture: "/assets/img/C++-Logo.png"},
+				{Title: "Python", Body: "Today feet good", Picture: "/assets/img/Python-Logo.png"},
+			},
 		}
-
 		tmpl.ExecuteTemplate(w, "index.html", blogs)
 
 	}
@@ -37,7 +38,8 @@ func main() {
 	h2 := func(w http.ResponseWriter, r *http.Request) {
 		title := r.PostFormValue("title")
 		body := r.PostFormValue("body")
-		err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body})
+		picture := r.PostFormValue("picture")
+		err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body, Picture: picture})
 		if err != nil {
 			log.Fatalln(err)
 		}
