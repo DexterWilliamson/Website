@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
+	"math/rand/v2"
 	"net/http"
 )
 
@@ -57,7 +59,18 @@ func main() {
 
 	http.HandleFunc("/resume", h1)
 	http.HandleFunc("/add-blog/", h2)
+	http.HandleFunc("/spawnSVG/", func(w http.ResponseWriter, r *http.Request) {
+		filepaths := []string{"templates/assets/img/zig_zag.svg", "templates/assets/img/v.svg", "templates/assets/img/just_o.svg", "templates/assets/img/x.svg"}
+		randomPicker := rand.IntN(len(filepaths))
+		fmt.Println("served")
+		http.ServeFile(w, r, filepaths[randomPicker])
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	})
+
+	//c := cron.New()
+	//c.AddFunc("@every 10s", func() { http.HandleFunc("/spawnSVG/", spawnSVG) })
+	//c.Start()
+	log.Fatal(http.ListenAndServe(":8080",
+		nil))
 
 }
