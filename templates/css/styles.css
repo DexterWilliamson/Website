@@ -11134,14 +11134,16 @@ img.icon {
 .svgSpawn {
 
   -webkit-animation-name: Floating;
-  -webkit-animation-duration: 6s;
   -webkit-animation-iteration-count: infinite;
+  position: relative;
   max-width: 5%;
   max-height: 5%;
+  z-index: -1;
+  top: 0;
 }
-
 
 @-webkit-keyframes Floating{
-  from {-webkit-transform:translateY(495vh);}
-  to {-webkit-transform: translateY(-100%);}    
+  100%{-webkit-transform: translateY(-500vh); opacity: 0;}
 }
+
+

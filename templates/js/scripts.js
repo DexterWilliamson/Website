@@ -79,29 +79,34 @@ function fadeIn(el, display) {
     })();
 };
 
-function randomInterval(){
-    const maxNum = Math.floor(Math.random() * (2000))
-    const minNum = Math.floor(Math.random() * (500))
-    return Math.floor(Math.random() * (maxNum - minNum - 1))
+function randomInterval(min, max){
+    const maxNum = Math.floor(Math.random() * (max))+min;
+    const minNum = Math.floor(Math.random() * (min))+1;
+    return Math.floor(Math.random() * (maxNum))+min;
 }
   
 window.onload = setInterval(function() {
     const parent = document.getElementById("newSVG");
     const svgList = ["/assets/img/zig_zag.svg", "/assets/img/v.svg", 
                      "/assets/img/just_o.svg", "/assets/img/x.svg"];
-    const randomSlice = Math.floor(Math.random() * (svgList.length - 1));
     const childCount = parent.childElementCount;
-    if (childCount > 30){
-        childToUpdate = parent.children[Math.floor(Math.random() * (30 - 1))];
-        childToUpdate.src=svgList[randomSlice]
-    }
-    else{
-        const img = document.createElement("img");
-        img.src = svgList[randomSlice]; // set the image source
-        img.className = "svgSpawn"; // set an Class for the image
-        parent.appendChild(img);
+    if (childCount < 30){
+        for (let i = childCount; i < 30; i++){
+            const img = document.createElement("img");
+            img.src = svgList[Math.floor(Math.random() * (svgList.length - 1))]; // set the image source
+            img.className = "svgSpawn"; // set an Class for the image
+            img.style["-webkit-animation-duration"] = randomInterval(7, 15) + "s";
+            img.style["-webkit-animation-delay"] = randomInterval(1, 5) + "s";
+            parent.appendChild(img);
 
-    }
+        };
+    };
+    if (childCount >= 30){
+        childToUpdate = parent.children[Math.floor(Math.random() * (30 - 1))];
+        childToUpdate.src= svgList[Math.floor(Math.random() * (svgList.length - 1))];
+        childToUpdate.style["-webkit-animation-duration"] = randomInterval(7, 15) + "s";
+        childToUpdate.style["-webkit-animation-delay"] = randomInterval(1, 5) + "s";
+    };
     
     
-  }, randomInterval());
+  }, 1000);
