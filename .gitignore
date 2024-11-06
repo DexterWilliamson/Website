@@ -6,3 +6,5 @@ templates/.DS_Store
 templates/assets/.DS_Store
 templates/assets/img/.DS_Store
 templates/assets/img/c++-logo.afdesign
+main
+assets/archiveindex.gohtml
