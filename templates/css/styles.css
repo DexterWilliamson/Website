@@ -10974,7 +10974,7 @@ html {
 
 footer.footer {
   padding-top: 5rem;
-  padding-bottom: 5rem;
+  /*padding-bottom: 5rem;*/
 }
 footer.footer .social-link {
   display: block;
@@ -11147,3 +11147,7 @@ img.icon {
 }
 
 
+.content-section-np{
+  padding-top: 5rem;
+
+}

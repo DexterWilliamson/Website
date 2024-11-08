@@ -67,10 +67,10 @@ func main() {
 	http.HandleFunc("/", h1)
 	http.HandleFunc("/add-blog/", h2)
 	http.HandleFunc("/spawnSVG/", func(w http.ResponseWriter, r *http.Request) {
-		filepaths := []string{wd + "/assets/img/zig_zag.svg", wd + "/assets/img/v.svg", wd + "/assets/img/just_o.svg", wd + "/assets/img/x.svg"}
+		filepaths := []string{"/assets/img/zig_zag.svg", "/assets/img/v.svg", "/assets/img/just_o.svg", "/assets/img/x.svg"}
 		randomPicker := rand.IntN(len(filepaths))
 		fmt.Println("served")
-		http.ServeFile(w, r, filepaths[randomPicker])
+		http.ServeFile(w, r, wd+filepaths[randomPicker])
 
 	})
 
