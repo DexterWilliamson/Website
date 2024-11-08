@@ -25,8 +25,6 @@ func main() {
 	wd, err := os.Getwd()
 	if err != nil {
 		fmt.Println("Error:", err)
-	} else {
-		fmt.Println("Current working directory:", wd)
 	}
 	tmpl = template.Must(template.ParseGlob(wd + "/templates/*.html"))
 
@@ -61,6 +59,7 @@ func main() {
 		http.ServeFile(w, r, wd+"/templates/js/scripts.js")
 	})
 	http.HandleFunc("/assets/", func(w http.ResponseWriter, r *http.Request) {
+
 		http.ServeFile(w, r, wd+r.URL.Path)
 	})
 
