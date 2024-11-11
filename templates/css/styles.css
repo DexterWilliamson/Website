@@ -62,7 +62,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #E8FCC2;
+  --bs-body-bg: #D2D8B3;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #394648;
@@ -11123,11 +11123,6 @@ img.icon {
   text-align: center;
 }
 
-.masthead img{
-  height: 40vh;
-  width: auto;
-
-}
 
 /* Custom */
 
@@ -11143,7 +11138,9 @@ img.icon {
 }
 
 @-webkit-keyframes Floating{
-  100%{-webkit-transform: translateY(-500vh); opacity: 0;}
+  0% {opacity: 0%;}
+  65% {opacity: 100%;}
+  100%{-webkit-transform: translateY(-500vh); opacity: 0%;}
 }
 
 

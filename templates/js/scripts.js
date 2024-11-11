@@ -93,20 +93,20 @@ window.onload = setInterval(function() {
     if (childCount < 30){
         for (let i = childCount; i < 30; i++){
             const img = document.createElement("object");
-            img.data = svgList[Math.floor(Math.random() * (svgList.length - 1))]; // set the image source
+            img.data = svgList[Math.floor(Math.random() * (svgList.length))]; // set the image source
             img.type = "image/svg+xml"
             img.className = "svgSpawn"; // set an Class for the image
             img.style["-webkit-animation-duration"] = randomInterval(7, 15) + "s";
-            img.style["-webkit-animation-delay"] = randomInterval(1, 5) + "s";
+            
             parent.appendChild(img);
 
         };
     };
     if (childCount >= 30){
         childToUpdate = parent.children[Math.floor(Math.random() * (30 - 1))];
-        childToUpdate.src= svgList[Math.floor(Math.random() * (svgList.length - 1))];
+        childToUpdate.src = svgList[Math.floor(Math.random() * (svgList.length ))];
         childToUpdate.style["-webkit-animation-duration"] = randomInterval(7, 15) + "s";
-        childToUpdate.style["-webkit-animation-delay"] = randomInterval(1, 5) + "s";
+        
     };
     
     
