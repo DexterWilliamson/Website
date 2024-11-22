@@ -52,7 +52,7 @@ func main() {
 		}
 	}
 
-	http.HandleFunc("/templates/css/styles.css", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("styles.css", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, wd+"/templates/css/styles.css")
 	})
 	http.HandleFunc("/templates/js/scripts.js", func(w http.ResponseWriter, r *http.Request) {
