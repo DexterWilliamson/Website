@@ -88,7 +88,7 @@ function randomInterval(min, max){
 window.onload = setInterval(function() {
     const parent = document.getElementById("newSVG");
     const svgList = ["/assets/img/zig_zag.svg", "/assets/img/v.svg", 
-                     "/assets/img/just_o.svg", "/assets/img/x.svg"];
+                     "/assets/img/just_o.svg", "/assets/img/u.svg","/assets/img/x.svg" ];
     const childCount = parent.childElementCount;
     if (childCount < 30){
         for (let i = childCount; i < 30; i++){
