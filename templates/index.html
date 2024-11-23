@@ -19,7 +19,7 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="styles.css" rel="stylesheet"/>
+        <link href="/styles.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -42,14 +42,17 @@
            
         </header>
         <!-- About Me -->
-        <section class="content-section" id="aboutme">
-            <div class="container px-4 px-lg-5 ">
-                <div class="row gx-0 gx-lg-5 justify-content-center">
+        <section class="content-section-np-top" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
                     <h2 class="text-center">About Me</h2>
+                </div>
+                <div class="row gx-0">
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
+                                    <div class="h2">Personal info</div>
                                     <p> Name: Dexter Williamson</p>
                                     <p> Hobbies: Photography, Microscopy, Reading, Programming</p>
                                     <p> Email: dexter.williamson1@gmail.com</p>
@@ -57,17 +60,6 @@
                                 </div>
                             </div>
                             <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
                         </a>
                     </div>
                     <div class="col-lg-6">
@@ -78,26 +70,37 @@
                                     <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
+                            <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
                         </a>
                     </div>
                     <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <p> Name: Dexter Williamson</p>
-                                    <p> Hobbies: Photography, Microscopy, Reading, Programming</p>
-                                    <p> Email: dexter.williamson1@gmail.com</p>
-                                    <p> Education: Computer Science Degree (2022-Now, Expected: 2026)</p>
+                                    <div class="h2">Strawberries</div>
+                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
                                 </div>
                             </div>
+                            <img class="img-fluid" src="/assets/img/portfolio-3.jpg" alt="..." />
+                        </a>
                     </div>
-        
-                    
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Workspace</div>
+                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/portfolio-4.jpg" alt="..." />
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
+        
         <!-- About Website -->
-        <section class="content-section bg-light" id="aboutwebsite">
+        <section class="content-section" id="aboutwebsite">
             <div class="container px-4 px-lg-5 text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-10">
@@ -120,7 +123,7 @@
             </div>
         </section>
         <!-- Services-->
-        <section class="content-section bg-primary text-white text-center" id="services">
+        <section class="content-section bg-primary-me text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h2 class="mb-5 text-secondary">Programming Languages</h2>
@@ -130,8 +133,8 @@
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         {{ block "blog-list-element" .}}
                             <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
-                              <strong><li class="list-group-item bg-primary text-white">{{ .Title}}</li></strong>
-                              <strong><li class="list-group-item bg-primary text-faded mb-0">{{ .Body }}</li></strong>
+                              <strong><li class="list-group-item bg-primary-me text-white">{{ .Title}}</li></strong>
+                              <strong><li class="list-group-item bg-primary-me text-faded mb-0">{{ .Body }}</li></strong>
                               {{ end }}
                     </div>
                     {{ end }}
