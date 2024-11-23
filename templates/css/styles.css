@@ -10,6 +10,14 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ /*
+Body color: #FBFFFE
+Callout color: #EDAD00
+Languages color: #266589
+About Me color: #FF5A5F
+
+ */
 :root {
   --bs-blue: #1D809F;
   --bs-indigo: #6610f2;
@@ -64,7 +72,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #F4F9E9;
+  --bs-body-bg: #FBFFFE;
   --bs-body-bg-section: #F4AFAB;
   --bs-border-width: 1px;
   --bs-border-style: solid;
