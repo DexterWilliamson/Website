@@ -34,66 +34,75 @@
         <!-- Header-->
         <header class="masthead align-items-center">
             <div class="row">
-                <div class="text-center">
+                <div class="text-center text-shadow">
                     <h1 class="mb-1">Welcome</h1>
                     <h3 class="mb-5"><em>to my resume</em></h3>
                 </div>
             </div>
-           
+            
         </header>
         <!-- About Me -->
-        <section class="content-section-np-top" id="portfolio">
+        <section class="content-section-np-top text-shadow" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h2 class="text-center">About Me</h2>
+                    <h2 class="text-center text-white text-shadow">About Me</h2>
+                </div>
+                <div class="row gx-0 text-white">
+                    <p>My name is Dexter Williamson and I am a 28 year old programmer. While creating an in
+                        house program at Charter Communications I also learned how to package, 
+                        create ci/cd pipelines, and working with other teams to facilitate the project. Though
+                        programming wasn't my offical job, I spent my spare time developing Raptor into a tool
+                        that increased my teams productivity and accuracy.
+                    </p>
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <div class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Personal info</div>
-                                    <p> Name: Dexter Williamson</p>
-                                    <p> Hobbies: Photography, Microscopy, Reading, Programming</p>
-                                    <p> Email: dexter.williamson1@gmail.com</p>
-                                    <p> Education: Computer Science Degree (2022-Now, Expected: 2026)</p>
+                                    <div class="h2">Other Technical Skills</div>
+                                    <p class="mb-0">SonarQube / Artifactory</p>
+                                    <p class="mb-0">Jenkins / BitBucket</p>
+                                    <p class="mb-0">SQL</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/code.png" alt="..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Most known programming libraries</div>
+                                    <p class="mb-0">Django</p>
+                                    <p class="mb-0">Pandas</p>
+                                    <p class="mb-0">net/http</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/libraryfunctions.png" alt="..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Nature Photography</div>
+                                    <p class="mb-0">Check out some nature photos I've taken on hikes</p>
                                 </div>
                             </div>
                             <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
-                        </a>
+                        </div>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <div class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+                                    <div class="h2">Mircoscopy</div>
+                                    <p class="mb-0">Check out some photos I've taken from my microscope</p>
                                 </div>
                             </div>
                             <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/assets/img/portfolio-4.jpg" alt="..." />
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,7 +117,7 @@
                         <p class="lead mb-5">
                             Rendered server side, bootstraped, javascript animations, and more
                         </p>
-                        <a class="btn btn-dark btn-xl" href="https://github.com/DexterWilliamson/DexterWilliamson">Github</a>
+                        <a target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-xl" href="https://github.com/DexterWilliamson/DexterWilliamson">Github</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +128,7 @@
                 <h2 class="mx-auto mb-5">
                     Link to the <em>resume</em>
                 </h2>
-                <a class="btn btn-primary btn-xl" href="/assets/download-resume">View Now!</a>
+                <a target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xl" href="/assets/download-resume">View Now!</a>
             </div>
         </section>
         <!-- Services-->
@@ -132,10 +141,12 @@
                     {{ range .Blogs}}
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         {{ block "blog-list-element" .}}
+                        <a class="portfolio-item" href="#!">
                             <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
-                              <strong><li class="list-group-item bg-primary-me text-white">{{ .Title}}</li></strong>
-                              <strong><li class="list-group-item bg-primary-me text-faded mb-0">{{ .Body }}</li></strong>
+                              <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
+                              <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
                               {{ end }}
+                        </a>
                     </div>
                     {{ end }}
                 </div>

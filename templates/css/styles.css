@@ -15,7 +15,7 @@
 Body color: #FBFFFE
 Callout color: #EDAD00
 Languages color: #266589
-About Me color: #FF5A5F
+About Me color: #EC7357
 
  */
 :root {
@@ -73,7 +73,7 @@ About Me color: #FF5A5F
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-bg: #FBFFFE;
-  --bs-body-bg-section: #F4AFAB;
+  --bs-body-bg-section: #ec7257e5;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #394648;
@@ -11109,15 +11109,6 @@ footer.footer .social-link:hover {
     -webkit-clip-path: inset(-1px);
             clip-path: inset(-1px);
   }
-  .portfolio-item:hover img {
-    -webkit-clip-path: inset(2rem);
-            clip-path: inset(2rem);
-  }
-  .portfolio-item:hover .caption {
-    background-color: rgba(29, 128, 159, 0.9);
-    -webkit-clip-path: inset(2rem);
-            clip-path: inset(2rem);
-  }
 }
 
 .service-icon {
@@ -11176,7 +11167,7 @@ img.icon {
   padding-top: 3rem;
   padding-bottom: 7rem;
   box-shadow: 0px 0px 5px #343a40;
-  clip-path: inset(0px -10px -10px 0px);
+  clip-path: inset(-10px -10px -10px 0px);
    
   background-color: var(--bs-body-bg-section);
 }
@@ -11228,74 +11219,14 @@ img.icon {
   margin-right: 5rem;
   margin-bottom: 5rem;
 }
-@media (min-width: 992px) {
-  .portfolio-item-me {
-    max-width: none;
-    margin: 0;
-  }
-  .portfolio-item-me .caption {
-    transition: background-color 0.7s, -webkit-clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out, background-color 0.7s;
-    transition: clip-path 0.25s ease-out, background-color 0.7s, -webkit-clip-path 0.25s ease-out;
-    -webkit-clip-path: inset(0px);
-            clip-path: inset(0px);
-  }
-  .portfolio-item-me .caption .caption-content {
-    transition: opacity 0.25s;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
-  }
-  .portfolio-item-me img {
-    transition: -webkit-clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out, -webkit-clip-path 0.25s ease-out;
-    -webkit-clip-path: inset(-1px);
-            clip-path: inset(-1px);
-  }
-  .portfolio-item-me:hover img {
-    -webkit-clip-path: inset(2rem);
-            clip-path: inset(2rem);
-  }
-  .portfolio-item-me:hover .caption {
-    background-color: rgba(29, 128, 159, 0.9);
-    -webkit-clip-path: inset(2rem);
-            clip-path: inset(2rem);
-  }
-}
 
-.portfolio-item-me {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  max-width: 530px;
-  margin: auto auto 1rem;
-}
-.portfolio-item-me .caption {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(33, 37, 41, 0.2);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-}
-.portfolio-item-me .caption .caption-content {
-  color: #fff;
-  margin: auto 2rem 2rem;
-}
-.portfolio-item-me .caption .caption-content h2, .portfolio-item-me .caption .caption-content .h2 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-}
-.portfolio-item-me .caption .caption-content p {
-  font-weight: 300;
-  font-size: 1.2rem;
-}
 
 .bg-primary-me {
-  --bs-bg-opacity: 1;
+  --bs-bg-opacity: 0.91;
   background-color: rgba(var(--bs-primary-rgb-me), var(--bs-bg-opacity)) !important;
 }
 
+.text-shadow{
+  text-shadow: 1px 1px 2px #6b8493e3;
+
+}
