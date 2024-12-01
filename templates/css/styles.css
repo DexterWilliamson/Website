@@ -11146,8 +11146,8 @@ img.icon {
 
 }
 
-.svgDiv {
 
+.svgDiv {
   display: flex;
 }
 
@@ -11229,4 +11229,33 @@ img.icon {
 .text-shadow{
   text-shadow: 1px 1px 2px #6b8493e3;
 
+}
+
+.section-border{
+  border: 5px solid black;
+  border-bottom-width: 0px;
+}
+
+.svgDivBorder{
+  border: 5px solid black;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+
+}
+
+.full-border{
+
+  border: 5px solid black;
+}
+
+.false-bg{
+
+  background-color: #ed8068;
+}
+
+.border-top{
+  border: 50px solid black;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
 }

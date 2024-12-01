@@ -9,7 +9,7 @@
         <meta name="author" content="" />
         <title>Doing it big</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Simple line icons-->
@@ -32,7 +32,7 @@
             </ul>
         </nav>
         <!-- Header-->
-        <header class="masthead align-items-center">
+        <header class="masthead align-items-center section-border">
             <div class="row">
                 <div class="text-center text-shadow">
                     <h1 class="mb-1">Welcome</h1>
@@ -42,12 +42,12 @@
             
         </header>
         <!-- About Me -->
-        <section class="content-section-np-top text-shadow" id="portfolio">
+        <section class="content-section-np-top text-shadow section-border" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h2 class="text-center text-white text-shadow">About Me</h2>
+                    <h2 class="text-center text-shadow">About Me</h2>
                 </div>
-                <div class="row gx-0 text-white">
+                <div class="row gx-0 false-bg">
                     <p>My name is Dexter Williamson and I am a 28 year old programmer. While creating an in
                         house program at Charter Communications I also learned how to package, 
                         create ci/cd pipelines, and working with other teams to facilitate the project. Though
@@ -79,7 +79,7 @@
                                     <p class="mb-0">net/http</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/libraryfunctions.png" alt="..." />
+                            <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -87,7 +87,7 @@
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h2">Nature Photography</div>
-                                    <p class="mb-0">Check out some nature photos I've taken on hikes</p>
+                                    <p class="mb-0">Check out some nature photos I've taken on walks</p>
                                 </div>
                             </div>
                             <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
@@ -109,10 +109,10 @@
         </section>
         
         <!-- About Website -->
-        <section class="content-section" id="aboutwebsite">
+        <section class="content-section section-border" id="aboutwebsite">
             <div class="container px-4 px-lg-5 text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
+                    <div class="col-lg-10 text-shadow">
                         <h2>Website is written in Go</h2>
                         <p class="lead mb-5">
                             Rendered server side, bootstraped, javascript animations, and more
@@ -123,7 +123,7 @@
             </div>
         </section>
          <!-- Callout-->
-         <section class="callout">
+         <section class="callout section-border">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mx-auto mb-5">
                     Link to the <em>resume</em>
@@ -132,7 +132,7 @@
             </div>
         </section>
         <!-- Services-->
-        <section class="content-section bg-primary-me text-white text-center" id="services">
+        <section class="content-section bg-primary-me text-white text-center section-border" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h2 class="mb-5 text-secondary">Programming Languages</h2>
@@ -141,12 +141,10 @@
                     {{ range .Blogs}}
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         {{ block "blog-list-element" .}}
-                        <a class="portfolio-item" href="#!">
                             <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
                               <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
                               <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
                               {{ end }}
-                        </a>
                     </div>
                     {{ end }}
                 </div>
