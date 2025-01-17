@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    {{ template "header" }}
+    <body id="page-top">
+        <!-- Header-->
+        <header class="masthead align-items-center section-border-no-top">
+            <div class="row">
+                <div class="text-center text-shadow">
+                    <h1 class="mb-1">Welcome</h1>
+                    <h3 class="mb-5"><em>to my website</em></h3>
+                </div>
+            </div>
+            
+        </header>
+        <!-- About Me -->
+        <section class="content-section-np-top section-border" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h2 class="text-center text-shadow">About Me</h2>
+                </div>
+                <div class="row gx-0 false-bg">
+                    <p>My name is Dexter Williamson and I am a 28 year old programmer. While working at Charter Communications as a Billing Analyst I also learned how to package, 
+                        create ci/cd pipelines, and working with other teams to facilitate the project. Though
+                        programming wasn't my offical job, I spent my spare time developing a data cleaning, processing, and comparison tool
+                        that increased my teams productivity and accuracy.
+                    </p>
+                </div>
+                <div class="row gx-0">
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Other Technical Skills</div>
+                                    <p class="mb-0">SonarQube / Artifactory</p>
+                                    <p class="mb-0">Jenkins / BitBucket</p>
+                                    <p class="mb-0">SQL</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="https://personal-website.nyc3.cdn.digitaloceanspaces.com/Resume-Images/code.png" alt="..." />
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Most known programming libraries</div>
+                                    <p class="mb-0">Django</p>
+                                    <p class="mb-0">Pandas</p>
+                                    <p class="mb-0">net/http</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/libraries.jpg" alt="..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Nature Photography</div>
+                                    <p class="mb-0">Check out some nature photos I've taken on walks</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Mircoscopy</div>
+                                    <p class="mb-0">Check out some photos I've taken from my microscope</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Website -->
+        <section class="content-section section-border" id="aboutwebsite">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10 text-shadow">
+                        <h2>Website is written in Go</h2>
+                        <p class="lead mb-5">
+                            Rendered server side, bootstraped, javascript animations, and more
+                        </p>
+                        <a target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-xl" href="https://github.com/DexterWilliamson/DexterWilliamson">Github</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Callout-->
+         <section class="callout section-border">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mx-auto mb-5">
+                    Link to the <em>resume</em>
+                </h2>
+                <a target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xl" href="/assets/download-resume">View Now!</a>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="content-section bg-primary-me text-white text-center section-border" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h2 class="mb-5 text-secondary">Programming Languages</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5" id="blog-list">
+                    {{ range .Blogs}}
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        {{ block "blog-list-element" .}}
+                            <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
+                              <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
+                              <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
+                              {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </section>
+       
+        <!-- Portfolio-->
+        {{ template "portfolio"}}
+
+        {{ template "footer"}}
+        {{ template "backgroundAnimations"}}
+    </body>
+</html>
