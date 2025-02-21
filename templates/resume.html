@@ -19,8 +19,9 @@
                     <h2 class="text-center text-shadow">About Me</h2>
                 </div>
                 <div class="row gx-0 false-bg">
-                    <p>My name is Dexter Williamson and I am a 28 year old programmer. While working at Charter Communications as a Billing Analyst I also learned how to package, 
-                        create ci/cd pipelines, and working with other teams to facilitate the project. Though
+                    <p>My name is Dexter Williamson and I am a 28 year old programmer. While working at Charter Communications as a Billing Analyst I also
+                        devolped an in house program called "Raptor" written with Python. Doing this and following the corporate
+                        guidelines I learned how to package the code, create ci/cd pipelines, and working with other teams. to facilitate the project. Though
                         programming wasn't my offical job, I spent my spare time developing a data cleaning, processing, and comparison tool
                         that increased my teams productivity and accuracy.
                     </p>
@@ -36,7 +37,7 @@
                                     <p class="mb-0">SQL</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="https://personal-website.nyc3.cdn.digitaloceanspaces.com/Resume-Images/code.png" alt="..." />
+                            <img class="img-fluid" src="/assets/resume/code.png" alt="..." />
                         </div>
                     </div>
                     
@@ -50,7 +51,7 @@
                                     <p class="mb-0">net/http</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/libraries.jpg" alt="..." />
+                            <img class="img-fluid" src="/assets/resume/libraries.jpg" alt="..." />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -61,7 +62,7 @@
                                     <p class="mb-0">Check out some nature photos I've taken on walks</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/mystery-mushroom.png" alt="..." />
+                            <img class="img-fluid" src="/assets/resume/mystery-mushroom.png" alt="..." />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -72,7 +73,7 @@
                                     <p class="mb-0">Check out some photos I've taken from my microscope</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/algae.png" alt="..." />
+                            <img class="img-fluid" src="/assets/resume/algae.png" alt="..." />
                         </div>
                     </div>
                 </div>
@@ -109,15 +110,13 @@
                     <h2 class="mb-5 text-secondary">Programming Languages</h2>
                 </div>
                 <div class="row gx-4 gx-lg-5" id="blog-list">
-                    {{ range .Blogs}}
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        {{ block "blog-list-element" .}}
-                            <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
-                              <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
-                              <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
-                              {{ end }}
+                            <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src=></span>
+                              <strong><li class="list-group-item text-white"></li></strong>
+                              <strong><li class="list-group-item text-faded mb-0"></li></strong>
+                
                     </div>
-                    {{ end }}
+
                 </div>
             </div>
         </section>
