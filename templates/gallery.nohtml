@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    {{ template "header" }}
+    {{ . }}
+    <body id="page-top">
+        <h2>{{.Selection}} </h2>
+        <div>
+            <div class="row">
+                <div class="column">
+                    {{ for photo in 10 photos }}
+                    {{ display photo }}
+                    {{ display discription on hover }}
+                <div class="column">
+                    {{ for photo in 10 photos starting at 10}}
+                    {{ display photo }}
+                    {{ display discription on hover }}
+
+                </div>
+                 etc
+        </div>
+    </body>
+
+</html>
