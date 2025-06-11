@@ -6,8 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path/filepath"
-	"strings"
+
 )
 
 type Blog struct {
@@ -22,8 +21,6 @@ type Categorys struct {
 
 var tmpl *template.Template
 
-
-
 func main() {
 
 	wd, err := os.Getwd()
@@ -37,24 +34,24 @@ func main() {
 		blogs := map[string][]Blog{
 			"Blogs": {
 				{Title: "Go", Body: "Today feet good", Picture: "https://personalphotos.nyc3.cdn.digitaloceanspaces.com/Go-Logo.png"},
-				{Title: "Java", Body: "Today feet good", Picture: "/assets/img/Java-Logo.png"},
-				{Title: "C++", Body: "Today feet good", Picture: "/assets/img/C++-Logo.png"},
-				{Title: "Python", Body: "Today feet good", Picture: "/assets/img/Python-Logo.png"},
+				{Title: "Java", Body: "Today feet good", Picture:  "/assets/img/Java-Logo.png"},
+				{Title: "C++", Body: "Today feet good", Picture:  "/assets/img/C++-Logo.png"},
+				{Title: "Python", Body: "Today feet good", Picture:  "/assets/img/Python-Logo.png"},
 			},
 		}
-		tmpl.ExecuteTemplate(w, "index.html", blogs)
+		tmpl.ExecuteTemplate(w, "resume.html", blogs)
 	
 	}
 
-	h2 := func(w http.ResponseWriter, r *http.Request) {
-		title := r.PostFormValue("title")
-		body := r.PostFormValue("body")
-		picture := r.PostFormValue("picture")
-		err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body, Picture: picture})
-		if err != nil {
-			log.Fatalln(err)
-		}
-	}
+	//h2 := func(w http.ResponseWriter, r *http.Request) {
+	//	title := r.PostFormValue("title")
+	//	body := r.PostFormValue("body")
+	//	picture := r.PostFormValue("picture")
+	//	err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body, Picture: picture})
+	//	if err != nil {
+	//		log.Fatalln(err)
+	//	}
+	//}
 
 	http.HandleFunc("/styles.css", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, wd+"/templates/css/styles.css")
@@ -72,7 +69,7 @@ func main() {
 	})
 
 	http.HandleFunc("/resume", func(w http.ResponseWriter, r *http.Request) {
-		tmpl.ExecuteTemplate(w, "resume.html", nil)
+		tmpl.ExecuteTemplate(w, wd + "/templates/resume.html", h1)
 
 	})
 
@@ -95,12 +92,12 @@ func main() {
 //
 	//})
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl.ExecuteTemplate(w, "index.html", nil)
+	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	//	tmpl.ExecuteTemplate(w, "index.html", nil)
 
-	})
+	//})
 
-	http.HandleFunc("/add-blog/", h2)
+	//http.HandleFunc("/add-blog/", h2)
 
 	//c := cron.New()
 	//c.AddFunc("@every 10s", func() { http.HandleFunc("/spawnSVG/", spawnSVG) })
