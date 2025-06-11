@@ -24,9 +24,6 @@ var tmpl *template.Template
 
 
 
-
-
-
 func main() {
 
 	wd, err := os.Getwd()
@@ -79,24 +76,24 @@ func main() {
 
 	})
 
-	http.HandleFunc("/gallery", func(w http.ResponseWriter, r *http.Request) {
-
-		entries, err := os.ReadDir(wd + "/assets" + r.URL.Path)
-		if err != nil {
-			log.Fatal(err)
-		}
-		newPhotoList := []Photo{}
-
-		for _, entry := range entries {
-			something := Photo{Title: strings.TrimSuffix(entry.Name(), filepath.Ext(entry.Name())), Picture: entry.Name()}
-			newPhotoList = append(newPhotoList, something)
-		}
-		photos := map[string][]Photo{
-			"Photos": newPhotoList,
-		}
-		tmpl.ExecuteTemplate(w, "gallery.html", photos)
-
-	})
+	//http.HandleFunc("/gallery", func(w http.ResponseWriter, r *http.Request) {
+//
+	//	entries, err := os.ReadDir(wd + "/assets" + r.URL.Path)
+	//	if err != nil {
+	//		log.Fatal(err)
+	//	}
+	//	newPhotoList := []Photo{}
+//
+	//	for _, entry := range entries {
+	//		something := Photo{Title: strings.TrimSuffix(entry.Name(), filepath.Ext(entry.Name())), Picture: entry.Name()}
+	//		newPhotoList = append(newPhotoList, something)
+	//	}
+	//	photos := map[string][]Photo{
+	//		"Photos": newPhotoList,
+	//	}
+	//	tmpl.ExecuteTemplate(w, "gallery.html", photos)
+//
+	//})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		tmpl.ExecuteTemplate(w, "index.html", nil)
