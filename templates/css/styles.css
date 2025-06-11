@@ -11148,6 +11148,7 @@ img.icon {
 
 
 .svgDiv {
+  display: flex;
 }
 
 @-webkit-keyframes Floating{
@@ -11165,7 +11166,8 @@ img.icon {
 .content-section-np-top{
   padding-top: 3rem;
   padding-bottom: 7rem;
-   
+  box-shadow: 0px 0px 5px #343a40;
+  clip-path: inset(-10px -10px -10px 0px);
   background-color: var(--bs-body-bg-section);
 }
 
@@ -11257,7 +11259,7 @@ img.icon {
 }
 
 .border-top{
-  border: 5px solid black;
+  border: 50px solid black;
   border-right-width: 0px;
   border-left-width: 0px;
   border-bottom-width: 0px;

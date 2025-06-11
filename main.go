@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"math/rand"
 
 )
 
@@ -36,7 +37,7 @@ func main() {
 				{Title: "Go", Body: "Today feet good", Picture: "https://personalphotos.nyc3.cdn.digitaloceanspaces.com/Go-Logo.png"},
 				{Title: "Java", Body: "Today feet good", Picture:  "/assets/img/Java-Logo.png"},
 				{Title: "C++", Body: "Today feet good", Picture:  "/assets/img/C++-Logo.png"},
-				{Title: "Python", Body: "Today feet good", Picture:  "/assets/img/Python-Logo.png"},
+				{Title: "Python", Body: "Today feet good", Picture: "/assets/img/Python-Logo.png"},
 			},
 		}
 		tmpl.ExecuteTemplate(w, "resume.html", blogs)
@@ -69,8 +70,17 @@ func main() {
 	})
 
 	http.HandleFunc("/resume", func(w http.ResponseWriter, r *http.Request) {
-		tmpl.ExecuteTemplate(w, wd + "/templates/resume.html", h1)
-
+	
+		blogs := map[string][]Blog{
+			"Blogs": {
+				{Title: "Go", Body: "Today feet good", Picture: "https://personalphotos.nyc3.cdn.digitaloceanspaces.com/Go-Logo.png"},
+				{Title: "Java", Body: "Today feet good", Picture:  "/assets/resume/Java-Logo.png"},
+				{Title: "C++", Body: "Today feet good", Picture:  "/assets/resume/C++-Logo.png"},
+				{Title: "Python", Body: "Today feet good", Picture: "/assets/resume/Python-Logo.png"},
+			},
+		}
+		tmpl.ExecuteTemplate(w, "resume.html", blogs)
+	
 	})
 
 	//http.HandleFunc("/gallery", func(w http.ResponseWriter, r *http.Request) {
@@ -92,16 +102,19 @@ func main() {
 //
 	//})
 
-	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	//	tmpl.ExecuteTemplate(w, "index.html", nil)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tmpl.ExecuteTemplate(w, "index.html", h1)
 
-	//})
+	})
 
 	//http.HandleFunc("/add-blog/", h2)
 
-	//c := cron.New()
-	//c.AddFunc("@every 10s", func() { http.HandleFunc("/spawnSVG/", spawnSVG) })
-	//c.Start()
+	http.HandleFunc("/spawnSVG/", func(w http.ResponseWriter, r *http.Request) {
+		filepaths := []string{"/assets/img/zig_zag.svg", "/assets/img/v.svg", "/assets/img/just_o.svg", "/assets/img/x.svg"}
+		randomPicker := rand.Intn(len(filepaths))
+		http.ServeFile(w, r, wd+filepaths[randomPicker])
+
+	})
 	log.Fatal(http.ListenAndServe(":8080",
 		nil))
 

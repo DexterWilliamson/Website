@@ -13,7 +13,7 @@
             
         </header>
         <!-- About Me -->
-        <section class="content-section-np-top section-border" id="portfolio">
+        <section class="content-section-np-top text-shadow section-border" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
                     <h2 class="text-center text-shadow">About Me</h2>
@@ -109,16 +109,16 @@
                 <div class="content-section-heading">
                     <h2 class="mb-5 text-secondary">Programming Languages</h2>
                 </div>
-                {{ range . }}
-                <div class="row gx-4 gx-lg-5" id="blog-list">
+                {{ range .Blogs}}
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        {{ block "blog-list-element" .}}
+                        <a class="portfolio-item" href="#!">
                             <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
-                              <strong><li class="list-group-item text-white"></li>{{ .Title }}</strong>
-                              <strong><li class="list-group-item text-faded mb-0"></li>{{ .Body }}</strong>
-                
+                              <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
+                              <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
+                              {{ end }}
+                        </a>
                     </div>
-
-                </div>
                 {{ end }}
             </div>
         </section>
