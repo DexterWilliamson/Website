@@ -30,19 +30,6 @@ func main() {
 	}
 	tmpl = template.Must(template.ParseGlob(wd + "/templates/*.html"))
 
-	h1 := func(w http.ResponseWriter, r *http.Request) {
-	
-		blogs := map[string][]Blog{
-			"Blogs": {
-				{Title: "Go", Body: "Today feet good", Picture: "https://personalphotos.nyc3.cdn.digitaloceanspaces.com/Go-Logo.png"},
-				{Title: "Java", Body: "Today feet good", Picture:  "/assets/img/Java-Logo.png"},
-				{Title: "C++", Body: "Today feet good", Picture:  "/assets/img/C++-Logo.png"},
-				{Title: "Python", Body: "Today feet good", Picture: "/assets/img/Python-Logo.png"},
-			},
-		}
-		tmpl.ExecuteTemplate(w, "resume.html", blogs)
-	
-	}
 
 	//h2 := func(w http.ResponseWriter, r *http.Request) {
 	//	title := r.PostFormValue("title")
@@ -64,6 +51,9 @@ func main() {
 
 		http.ServeFile(w, r, wd+r.URL.Path)
 	})
+	http.HandleFunc("/cdn/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://personalphotos.nyc3.cdn.digitaloceanspaces.com"+r.URL.Path[4:], http.StatusTemporaryRedirect)
+	})
 	http.HandleFunc("/assets/download-resume", func(w http.ResponseWriter, r *http.Request) {
 
 		http.ServeFile(w, r, wd+"/assets/Dexter_Williamson_Resume.pdf")
@@ -73,10 +63,10 @@ func main() {
 	
 		blogs := map[string][]Blog{
 			"Blogs": {
-				{Title: "Go", Body: "Today feet good", Picture: "https://personalphotos.nyc3.cdn.digitaloceanspaces.com/Go-Logo.png"},
-				{Title: "Java", Body: "Today feet good", Picture:  "/assets/resume/Java-Logo.png"},
-				{Title: "C++", Body: "Today feet good", Picture:  "/assets/resume/C++-Logo.png"},
-				{Title: "Python", Body: "Today feet good", Picture: "/assets/resume/Python-Logo.png"},
+				{Title: "Go", Body: "Today feet good", Picture: "/cdn/Go-Logo.png"},
+				{Title: "Java", Body: "Today feet good", Picture:  "/cdn/Java-Logo.png"},
+				{Title: "C++", Body: "Today feet good", Picture:  "/cdn/C++-Logo.png"},
+				{Title: "Python", Body: "Today feet good", Picture: "/cdn/Python-Logo.png"},
 			},
 		}
 		tmpl.ExecuteTemplate(w, "resume.html", blogs)
@@ -102,15 +92,10 @@ func main() {
 //
 	//})
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl.ExecuteTemplate(w, "index.html", h1)
-
-	})
-
 	//http.HandleFunc("/add-blog/", h2)
 
 	http.HandleFunc("/spawnSVG/", func(w http.ResponseWriter, r *http.Request) {
-		filepaths := []string{"/assets/img/zig_zag.svg", "/assets/img/v.svg", "/assets/img/just_o.svg", "/assets/img/x.svg"}
+		filepaths := []string{"/assets/resume/zig_zag.svg", "/assets/resume/v.svg", "/assets/resume/just_o.svg", "/assets/resume/x.svg"}
 		randomPicker := rand.Intn(len(filepaths))
 		http.ServeFile(w, r, wd+filepaths[randomPicker])
 
