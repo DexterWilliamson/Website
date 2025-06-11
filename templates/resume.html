@@ -95,7 +95,7 @@
             </div>
         </section>
          <!-- Callout-->
-         <section class="callout section-border">
+         <section class="callout section-border bg-secondary">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mx-auto mb-5">
                     Link to the <em>resume</em>
@@ -109,17 +109,19 @@
                 <div class="content-section-heading">
                     <h2 class="mb-5 text-secondary">Programming Languages</h2>
                 </div>
-                {{ range .Blogs}}
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        {{ block "blog-list-element" .}}
-                        <a class="portfolio-item" href="#!">
-                            <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
-                              <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
-                              <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
-                              {{ end }}
-                        </a>
-                    </div>
-                {{ end }}
+                <div style="display: flex;">
+                    {{ range .Blogs}}
+                        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                            {{ block "blog-list-element" .}}
+                            <a class="portfolio-item" href="#!">
+                                <span class="service-icon rounded-circle mx-auto mb-3"><img class="icon" src={{ .Picture }}></span>
+                                <strong><li class="list-group-item text-white">{{ .Title}}</li></strong>
+                                <strong><li class="list-group-item text-faded mb-0">{{ .Body }}</li></strong>
+                                {{ end }}
+                            </a>
+                        </div>
+                    {{ end }}
+                </div>
             </div>
         </section>
        
