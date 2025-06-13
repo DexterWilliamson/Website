@@ -6,7 +6,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"math/rand"
+	"strings"
+	"github.com/aws/aws-sdk-go/aws"
+    "github.com/aws/aws-sdk-go/aws/credentials"
+    "github.com/aws/aws-sdk-go/aws/session"
+    "github.com/aws/aws-sdk-go/service/s3"
 
 )
 
@@ -22,7 +26,43 @@ type Categorys struct {
 
 var tmpl *template.Template
 
+func cdnConnect(){
+    // Step 2: Define the parameters for the session you want to create.
+    key := os.Getenv("AWS_ACCESS_KEY_ID") // Access key pair. You can create access key pairs using the control panel or API.
+    secret := os.Getenv("AWS_SECRET_ACCESS_KEY") // Secret access key defined through an environment variable.
+
+    s3Config := &aws.Config{
+        Credentials: credentials.NewStaticCredentials(key, secret, ""), // Specifies your credentials.
+        Endpoint:    aws.String("https://nyc3.digitaloceanspaces.com"), // Find your endpoint in the control panel, under Settings. Prepend "https://".
+        S3ForcePathStyle: aws.Bool(false), // // Configures to use subdomain/virtual calling format. Depending on your version, alternatively use o.UsePathStyle = false
+        Region:      aws.String("us-east-1"), // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint, such as "nyc3".
+    }
+
+    // Step 3: The new session validates your request and directs it to your Space's specified endpoint using the AWS SDK.
+    newSession := session.New(s3Config)
+    s3Client := s3.New(newSession)
+
+    // Step 4: Define the parameters of the object you want to upload.
+    object := s3.PutObjectInput{
+        Bucket: aws.String("personalphotos"), // The path to the directory you want to upload the object to, starting with your Space name.
+        Key:    aws.String("hello-world.txt"), // Object key, referenced whenever you want to access this file later.
+        Body:   strings.NewReader("Hello, World!"), // The object's contents.
+        ACL:    aws.String("private"), // Defines Access-control List (ACL) permissions, such as private or public.
+        Metadata: map[string]*string{ // Required. Defines metadata tags.
+                                 "x-amz-meta-my-key": aws.String("your-value"),
+                         },
+    }
+
+    // Step 5: Run the PutObject function with your parameters, catching for errors.
+    _, err := s3Client.PutObject(&object)
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+	fmt.Println("done?")
+}
+
 func main() {
+	cdnConnect()
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -31,15 +71,15 @@ func main() {
 	tmpl = template.Must(template.ParseGlob(wd + "/templates/*.html"))
 
 
-	//h2 := func(w http.ResponseWriter, r *http.Request) {
-	//	title := r.PostFormValue("title")
-	//	body := r.PostFormValue("body")
-	//	picture := r.PostFormValue("picture")
-	//	err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body, Picture: picture})
-	//	if err != nil {
-	//		log.Fatalln(err)
-	//	}
-	//}
+	h2 := func(w http.ResponseWriter, r *http.Request) {
+		title := r.PostFormValue("title")
+		body := r.PostFormValue("body")
+		picture := r.PostFormValue("picture")
+		err := tmpl.ExecuteTemplate(w, "blog-list-element", Blog{Title: title, Body: body, Picture: picture})
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
 
 	http.HandleFunc("/styles.css", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, wd+"/templates/css/styles.css")
@@ -89,17 +129,11 @@ func main() {
 	//		"Photos": newPhotoList,
 	//	}
 	//	tmpl.ExecuteTemplate(w, "gallery.html", photos)
-//
+	//
 	//})
 
-	//http.HandleFunc("/add-blog/", h2)
+	http.HandleFunc("/add-blog/", h2)
 
-	http.HandleFunc("/spawnSVG/", func(w http.ResponseWriter, r *http.Request) {
-		filepaths := []string{"/assets/resume/zig_zag.svg", "/assets/resume/v.svg", "/assets/resume/just_o.svg", "/assets/resume/x.svg"}
-		randomPicker := rand.Intn(len(filepaths))
-		http.ServeFile(w, r, wd+filepaths[randomPicker])
-
-	})
 	log.Fatal(http.ListenAndServe(":8080",
 		nil))
 
