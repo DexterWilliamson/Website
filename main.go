@@ -58,7 +58,6 @@ func cdnConnect(){
     if err != nil {
         fmt.Println(err.Error())
     }
-	fmt.Println("done?")
 }
 
 func main() {
@@ -101,15 +100,15 @@ func main() {
 
 	http.HandleFunc("/resume", func(w http.ResponseWriter, r *http.Request) {
 	
-		blogs := map[string][]Blog{
-			"Blogs": {
-				{Title: "Go", Body: "Today feet good", Picture: "/cdn/Go-Logo.png"},
-				{Title: "Java", Body: "Today feet good", Picture:  "/cdn/Java-Logo.png"},
-				{Title: "C++", Body: "Today feet good", Picture:  "/cdn/C++-Logo.png"},
-				{Title: "Python", Body: "Today feet good", Picture: "/cdn/Python-Logo.png"},
+		progLangs := map[string][]Blog{
+			"Progs": {
+				{Title: "Go", Picture: "/cdn/Go-Logo.png"},
+				{Title: "Java", Picture:  "/cdn/Java-Logo.png"},
+				{Title: "C++", Picture:  "/cdn/C++-Logo.png"},
+				{Title: "Python", Picture: "/cdn/Python-Logo.png"},
 			},
 		}
-		tmpl.ExecuteTemplate(w, "resume.html", blogs)
+		tmpl.ExecuteTemplate(w, "resume.html", progLangs)
 	
 	})
 
